@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Volunteers</title>
+    <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"><img style="height: 45px;" src="images/logo 1.png" alt="NCF Logo"></div>
+                <div>
+                    <h2>NCF Admin</h2>
+                    <p>Volunteers</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="/dashboard">🏠 Dashboard</a>
+                <a href="/news-page">📰 News</a>
+                <a href="/events-page">📅 Events</a>
+                <a href="/gallery-page">🖼 Gallery</a>
+                <a href="/donations-page">❤️ Donations</a>
+                <a href="/volunteers-page" class="active">👥 Volunteers</a>
+                <a href="/messages-page">📩 Messages</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>People</p>
+                <strong>Manage volunteers and their information.</strong>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Team</p>
+                    <h1>Volunteers</h1>
+                </div>
+                <div class="user-chip" id="profileMenuWrapper">
+                    <div class="user-chip-info">
+                        <strong id="adminName">Admin</strong>
+                        <span id="adminRole">Role</span>
+                    </div>
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/logo 1.png">
+                    <span class="status-dot"></span>
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="#" id="myProfileLink">My Profile</a>
+                        <a href="#" id="changePasswordLink">Change Password</a>
+                        <a href="#" id="logoutLink">Logout</a>
+                    </div>
+                </div>
+            </header>
+            <section class="hero-card">
+                <div>
+                    <p class="eyebrow">Manage</p>
+                    <h2>Volunteer roster and contact information.</h2>
+                </div>
+                <div class="hero-badge">People</div>
+            </section>
+            <section class="content-grid">
+                <div class="panel form-panel">
+                    <div class="panel-header">
+                        <h3>Add Volunteer</h3>
+                    </div>
+                    <form id="volForm" class="news-form">
+                        <label>
+                            <span>Full Name</span>
+                            <input id="fullname" placeholder="Volunteer name" required>
+                        </label>
+                        <label>
+                            <span>Phone</span>
+                            <input id="phone" type="tel" placeholder="Contact number">
+                        </label>
+                        <label>
+                            <span>Email</span>
+                            <input id="email" type="email" placeholder="Email address">
+                        </label>
+                        <label>
+                            <span>Address</span>
+                            <input id="address" placeholder="Physical address">
+                        </label>
+                        <label>
+                            <span>Skills</span>
+                            <textarea id="skills" placeholder="Skills and expertise (comma-separated)"></textarea>
+                        </label>
+                        <label>
+                            <span>Status</span>
+                            <select id="status">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="leave">On Leave</option>
+                            </select>
+                        </label>
+                        <div class="form-actions">
+                            <button type="submit" id="submitBtn">Save Volunteer</button>
+                            <button type="button" id="cancelBtn" class="secondary-btn" hidden>Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel table-panel">
+                    <div class="panel-header">
+                        <h3>Volunteers</h3>
+                        <span id="count">0</span>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Full Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Skills</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="confirm-modal" class="confirm-modal" aria-hidden="true">
+        <div class="confirm-backdrop" data-close></div>
+        <div class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+            <h3 id="confirm-title">Confirm action</h3>
+            <p id="confirm-message">Are you sure?</p>
+            <div class="confirm-actions">
+                <button id="confirm-cancel" class="secondary-btn">Cancel</button>
+                <button id="confirm-yes" class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Change Password</h3>
+            <form id="changePasswordForm">
+                <input id="currentPassword" type="password" placeholder="Current Password" required>
+                <input id="newPassword" type="password" placeholder="New Password" required>
+                <div class="modal-actions">
+                    <button type="submit">Save</button>
+                    <button type="button" id="cancelPasswordBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/volunteers.js"></script>
+</body>
+</html>

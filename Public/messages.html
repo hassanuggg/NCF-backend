@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Messages</title>
+    <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"><img style="height: 45px;" src="images/Logo 1.png" alt="NCF Logo"></div>
+                <div>
+                    <h2>NCF Admin</h2>
+                    <p>Messages</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="/dashboard">🏠 Dashboard</a>
+                <a href="/news-page">📰 News</a>
+                <a href="/events-page">📅 Events</a>
+                <a href="/gallery-page">🖼 Gallery</a>
+                <a href="/donations-page">❤️ Donations</a>
+                <a href="/volunteers-page">👥 Volunteers</a>
+                <a href="/messages-page" class="active">📩 Messages</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Inbox</p>
+                <strong>Manage messages from community.</strong>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Inbox</p>
+                    <h1>Messages</h1>
+                </div>
+                <div class="user-chip" id="profileMenuWrapper">
+                    <div class="user-chip-info">
+                        <strong id="adminName">Admin</strong>
+                        <span id="adminRole">Role</span>
+                    </div>
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/Logo 1.png">
+                    <span class="status-dot"></span>
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="#" id="myProfileLink">My Profile</a>
+                        <a href="#" id="changePasswordLink">Change Password</a>
+                        <a href="#" id="logoutLink">Logout</a>
+                    </div>
+                </div>
+            </header>
+            <section class="hero-card">
+                <div>
+                    <p class="eyebrow">Communication</p>
+                    <h2>View and manage incoming messages.</h2>
+                </div>
+                <div class="hero-badge">Mail</div>
+            </section>
+            <section class="content-grid">
+                <div class="chat-shell">
+                    <aside class="chat-sidebar">
+                        <div class="chat-sidebar-header">
+                            <div class="sidebar-profile">
+                                <img id="sidebarAdminImage" src="images/Logo 1.png" alt="Profile" />
+                                <div>
+                                    <strong id="sidebarAdminName">Admin</strong>
+                                    <span id="sidebarAdminRole">Administrator</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-search">
+                            <input id="chatSearch" type="text" placeholder="Search administrators" />
+                        </div>
+                        <div id="conversationList" class="conversation-list"></div>
+                    </aside>
+
+                    <section class="chat-room">
+                        <div id="chatMainHeader" class="chat-main-header"></div>
+                        <div id="chatMessages" class="chat-messages"></div>
+                        <div class="chat-composer">
+                            <label class="composer-attach" title="Attach image">
+                                <input id="attachmentInput" type="file" accept="image/*" hidden />
+                                <span>📷</span>
+                            </label>
+                            <textarea id="messageInput" rows="1" placeholder="Type a message..."></textarea>
+                            <button id="sendBtn" class="send-btn" type="button">Send</button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="passwordModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Change Password</h3>
+            <form id="changePasswordForm">
+                <input id="currentPassword" type="password" placeholder="Current Password" required>
+                <input id="newPassword" type="password" placeholder="New Password" required>
+                <div class="modal-actions">
+                    <button type="submit">Save</button>
+                    <button type="button" id="cancelPasswordBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/app-config.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCF Admin Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"> <img style="height: 45px;" src="images/logo 1.png" alt="NCF Logo"> </div>
+                <div>
+                    <h2>NCF Admin</h2>
+                    <p>Charity Dashboard</p>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="/dashboard" class="active">🏠 Dashboard</a>
+                <a href="/news-page">📰 News</a>
+                <a href="/events-page">📅 Events</a>
+                <a href="/gallery-page">🖼 Gallery</a>
+                <a href="/donations-page">❤️ Donations</a>
+                <a href="/volunteers-page">👥 Volunteers</a>
+                <a href="/messages-page">📩 Messages</a>
+                <a href="#">⚙ Settings</a>
+                <a href="#">🚪 Logout</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Mission focus</p>
+                <strong>Empower communities with care.</strong>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Overview</p>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="user-chip" id="profileMenuWrapper">
+                    <div class="user-chip-info">
+                        <strong id="adminName">Admin</strong>
+                        <span id="adminRole">Role</span>
+                    </div>
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/logo 1.png">
+                    <span class="status-dot"></span>
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="#" id="myProfileLink">My Profile</a>
+                        <a href="#" id="changePasswordLink">Change Password</a>
+                        <a href="#" id="logoutLink">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <section class="hero-panel">
+                <div>
+                    <p class="eyebrow">Today at a glance</p>
+                    <h2>Keep your mission moving smoothly.</h2>
+                    <p>Manage news, events, volunteers, and updates from one elegant workspace.</p>
+                </div>
+                <div class="hero-badge">Live updates</div>
+            </section>
+
+            <section class="cards">
+                <div class="card card-news">
+                    <div class="icon">📰</div>
+                    <div>
+                        <h2 id="newsCount">25</h2>
+                        <p>Total News</p>
+                    </div>
+                </div>
+
+                <div class="card card-events">
+                    <div class="icon">📅</div>
+                    <div>
+                        <h2 id="eventsCount">8</h2>
+                        <p>Total Events</p>
+                    </div>
+                </div>
+
+                <div class="card card-gallery">
+                    <div class="icon">🖼</div>
+                    <div>
+                        <h2 id="galleryCount">30</h2>
+                        <p>Gallery Images</p>
+                    </div>
+                </div>
+
+                <div class="card card-volunteers">
+                    <div class="icon">👥</div>
+                    <div>
+                        <h2 id="volunteersCount">52</h2>
+                        <p>Volunteers</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Quick Actions</h3>
+                        <a href="#">View all</a>
+                    </div>
+                    <div class="action-list">
+                        <button>Add News</button>
+                        <button>Create Event</button>
+                        <button>Upload Gallery</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Recent Activity</h3>
+                        <a href="#">See more</a>
+                    </div>
+                    <ul class="activity-list">
+                        <li>
+                            <span class="dot"></span>
+                            <div>
+                                <strong>New volunteer joined</strong>
+                                <p>3 minutes ago</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="dot"></span>
+                            <div>
+                                <strong>Event schedule updated</strong>
+                                <p>25 minutes ago</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="dot"></span>
+                            <div>
+                                <strong>Donation report shared</strong>
+                                <p>1 hour ago</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="passwordModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Change Password</h3>
+            <form id="changePasswordForm">
+                <input id="currentPassword" type="password" placeholder="Current Password" required>
+                <input id="newPassword" type="password" placeholder="New Password" required>
+                <div class="modal-actions">
+                    <button type="submit">Save</button>
+                    <button type="button" id="cancelPasswordBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

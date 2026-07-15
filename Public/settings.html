@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="css/news.css" />
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"><img style="height: 45px;" src="images/logo 1.png" alt="NCF Logo"></div>
+                <div>
+                    <h2>NCF Admin</h2>
+                    <p>Settings</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="/dashboard">🏠 Dashboard</a>
+                <a href="/news-page">📰 News</a>
+                <a href="/events-page">📅 Events</a>
+                <a href="/gallery-page">🖼 Gallery</a>
+                <a href="/donations-page">❤️ Donations</a>
+                <a href="/volunteers-page">👥 Volunteers</a>
+                <a href="/messages-page">📩 Messages</a>
+                <a href="/settings.html" class="active">⚙ Settings</a>
+                <a href="#" id="logoutLink">🚪 Logout</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>System configuration</p>
+                <strong>Manage the foundation’s operational settings.</strong>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">System</p>
+                    <h1>Settings</h1>
+                </div>
+                <div class="user-chip" id="profileMenuWrapper">
+                    <div class="user-chip-info">
+                        <strong id="adminName">Admin</strong>
+                        <span id="adminRole">Role</span>
+                    </div>
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/logo 1.png">
+                    <span class="status-dot"></span>
+                </div>
+            </header>
+
+            <section class="hero-card">
+                <div>
+                    <p class="eyebrow">Organization</p>
+                    <h2>Manage global system settings.</h2>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <div class="panel">
+                    <div class="panel-header"><h3>General</h3></div>
+                    <form id="settingsForm" class="news-form">
+                        <label><span>Organization Name</span><input id="organizationName" /></label>
+                        <label><span>Logo</span><input id="logo" /></label>
+                        <label><span>Phone</span><input id="phone" /></label>
+                        <label><span>Email</span><input id="email" /></label>
+                        <label><span>Address</span><input id="address" /></label>
+                        <label><span>Website</span><input id="website" /></label>
+                        <label><span>Theme</span><input id="theme" /></label>
+                        <label><span>Session Timeout (minutes)</span><input id="sessionTimeout" type="number" /></label>
+                        <div class="form-actions"><button type="submit">Save Settings</button></div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

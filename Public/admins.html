@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrators</title>
+    <link rel="stylesheet" href="css/news.css" />
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"><img style="height: 45px;" src="images/logo 1.png" alt="NCF Logo"></div>
+                <div>
+                    <h2>NCF Admin</h2>
+                    <p>Administrators</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="/dashboard">🏠 Dashboard</a>
+                <a href="/news-page">📰 News</a>
+                <a href="/events-page">📅 Events</a>
+                <a href="/gallery-page">🖼 Gallery</a>
+                <a href="/donations-page">❤️ Donations</a>
+                <a href="/volunteers-page">👥 Volunteers</a>
+                <a href="/messages-page">📩 Messages</a>
+                <a href="/admins.html" class="active">👥 Administrators</a>
+                <a href="/settings.html">⚙ Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Admin access</p>
+                <strong>Manage administrators and roles.</strong>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Governance</p>
+                    <h1>Administrators</h1>
+                </div>
+                <div class="user-chip" id="profileMenuWrapper">
+                    <div class="user-chip-info">
+                        <strong id="adminName">Admin</strong>
+                        <span id="adminRole">Role</span>
+                    </div>
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/logo 1.png">
+                    <span class="status-dot"></span>
+                </div>
+            </header>
+
+            <section class="hero-card">
+                <div>
+                    <p class="eyebrow">Access control</p>
+                    <h2>Create, edit, and manage team roles.</h2>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <div class="panel">
+                    <div class="panel-header"><h3>Add Administrator</h3></div>
+                    <form id="adminForm" class="news-form">
+                        <label><span>Full Name</span><input id="adminFullName" required /></label>
+                        <label><span>Username</span><input id="adminUsername" required /></label>
+                        <label><span>Password</span><input id="adminPassword" type="password" required /></label>
+                        <label><span>Role</span><select id="adminRoleSelect"><option>Super Administrator</option><option>Executive Director</option><option>Director of Partnership</option><option>Administration and Finance</option><option>Director of Communication and Public Relations</option><option>Director of Operations and Programs</option></select></label>
+                        <label><span>Status</span><select id="adminStatus"><option>Active</option><option>Inactive</option></select></label>
+                        <label><span>Phone</span><input id="adminPhone" /></label>
+                        <label><span>Email</span><input id="adminEmail" /></label>
+                        <div class="form-actions"><button type="submit">Save Administrator</button></div>
+                    </form>
+                </div>
+                <div class="panel">
+                    <div class="panel-header"><h3>Existing Administrators</h3></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+                            <tbody id="adminsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/admins.js"></script>
+</body>
+</html>
