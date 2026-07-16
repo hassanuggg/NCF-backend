@@ -164,19 +164,6 @@ app.get("/news-page", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "news.html"));
 });
 
-    db.all("SELECT * FROM news ORDER BY id DESC", [], (err, rows) => {
-
-        if (err) {
-            console.log(err);
-            return res.status(500).json({ message: "Failed to load news" });
-        }
-
-        res.json(rows);
-
-    });
-
-});
-
 app.all('/news', (req, res, next) => {
     console.log('ALL /news middleware:', req.method);
     next();
@@ -651,23 +638,23 @@ app.delete("/news/:id", (req, res) => {
 
 // Serve additional pages
 app.get("/events-page", (req, res) => {
-    res.sendFile(__dirname + "/public/events.html");
+    res.sendFile(path.join(__dirname, "public", "events.html"));
 });
 
 app.get("/gallery-page", (req, res) => {
-    res.sendFile(__dirname + "/public/gallery.html");
+    res.sendFile(path.join(__dirname, "public", "gallery.html"));
 });
 
 app.get("/donations-page", (req, res) => {
-    res.sendFile(__dirname + "/public/donations.html");
+    res.sendFile(path.join(__dirname, "public", "donations.html"));
 });
 
 app.get("/volunteers-page", (req, res) => {
-    res.sendFile(__dirname + "/public/volunteers.html");
+    res.sendFile(path.join(__dirname, "public", "volunteers.html"));
 });
 
 app.get("/messages-page", (req, res) => {
-    res.sendFile(__dirname + "/public/messages.html");
+    res.sendFile(path.join(__dirname, "public", "messages.html"));
 });
 
 function requireAdminSession(req, res, next) {
