@@ -3,7 +3,8 @@ const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
 
-const db = new sqlite3.Database("./database/ncf.db", (err) => {
+const dbPath = path.join(__dirname, "ncf.db");
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.log(err.message);
     } else {

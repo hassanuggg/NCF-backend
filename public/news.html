@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Management</title>
-    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/admin-shell.css">
 </head>
 <body>
     <div class="dashboard-shell">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-icon"><img style="height: 45px;" src="images/logo 1.png" alt="NCF Logo"></div>
-                <div>
-                    <h2>NCF Admin</h2>
-                    <p>News Workspace</p>
+            <div>
+                <div class="brand">
+                    <div class="brand-icon"><img src="/images/Logo%201.png" alt="Nanyoni Charity Foundation Logo"></div>
+                    <div>
+                        <h2>NCF Admin</h2>
+                        <p>News Workspace</p>
+                    </div>
                 </div>
-            </div>
 
-            <nav class="nav-links">
-                <a href="/dashboard">🏠 Dashboard</a>
-                <a href="/news-page" class="active">📰 News</a>
-                <a href="/events-page">📅 Events</a>
-                <a href="/gallery-page">🖼 Gallery</a>
-                <a href="/donations-page">❤️ Donations</a>
-                <a href="/volunteers-page">👥 Volunteers</a>
-                <a href="/messages-page">📩 Messages</a>
-                <a href="#">⚙ Settings</a>
-                <a href="#">🚪 Logout</a>
-            </nav>
+                <nav class="nav-links">
+                    <a href="/dashboard">🏠 Dashboard</a>
+                    <a href="/news-page" class="active">📰 News</a>
+                    <a href="/events-page">📅 Events</a>
+                    <a href="/gallery-page">🖼 Gallery</a>
+                    <a href="/donations-page">❤️ Donations</a>
+                    <a href="/volunteers-page">👥 Volunteers</a>
+                    <a href="/messages-page">📩 Messages</a>
+                    <a href="/settings.html">⚙ Settings</a>
+                    <a href="#" id="logoutLinkSidebar">🚪 Logout</a>
+                </nav>
+            </div>
 
             <div class="sidebar-footer">
                 <p>Editorial status</p>
@@ -37,24 +39,32 @@
 
         <main class="main">
             <header class="topbar">
-                <div>
-                    <p class="eyebrow">Content</p>
-                    <h1>News Management</h1>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar" onclick="document.body.classList.toggle('sidebar-open')">☰</button>
+                    <div>
+                        <p class="eyebrow">Content</p>
+                        <h1>News Management</h1>
+                    </div>
                 </div>
                 <div class="user-chip" id="profileMenuWrapper">
                     <div class="user-chip-info">
                         <strong id="adminName">Admin</strong>
                         <span id="adminRole">Role</span>
                     </div>
-                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/logo 1.png">
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="/images/Logo%201.png">
                     <span class="status-dot"></span>
                     <div class="profile-menu" id="profileMenu">
-                        <a href="#" id="myProfileLink">My Profile</a>
+                        <a href="/profile.html" id="myProfileLink">My Profile</a>
                         <a href="#" id="changePasswordLink">Change Password</a>
                         <a href="#" id="logoutLink">Logout</a>
                     </div>
                 </div>
             </header>
+
+            <div class="page-toolbar">
+                <div class="breadcrumbs"><a href="/dashboard">Dashboard</a> &gt; News</div>
+                <a class="back-link" href="/dashboard">← Back to Dashboard</a>
+            </div>
 
             <section class="hero-card">
                 <div>
@@ -67,28 +77,11 @@
 
             <section class="content-grid">
                 <div class="panel form-panel">
-                    <div class="panel-header">
-                        <h3>Add New News</h3>
-                        <span>New post</span>
-                    </div>
-
+                    <div class="panel-header"><h3>Add New News</h3><span>New post</span></div>
                     <form id="newsForm" class="news-form">
-                        <label>
-                            <span>Title</span>
-                            <input type="text" id="title" placeholder="Enter news title" required>
-                        </label>
-
-                        <label>
-                            <span>Description</span>
-                            <textarea id="description" placeholder="Write your news description" required></textarea>
-                        </label>
-
-                        <label>
-                            <span>Image (optional)</span>
-                            <input type="file" id="imageInput" accept="image/png, image/jpeg">
-                            <img id="imagePreview" src="" alt="" style="display:none;max-width:160px;margin-top:10px;border-radius:8px;" />
-                        </label>
-
+                        <label><span>Title</span><input type="text" id="title" placeholder="Enter news title" required></label>
+                        <label><span>Description</span><textarea id="description" placeholder="Write your news description" required></textarea></label>
+                        <label><span>Image (optional)</span><input type="file" id="imageInput" accept="image/png, image/jpeg"><img id="imagePreview" src="" alt="" style="display:none;max-width:160px;margin-top:10px;border-radius:8px;" /></label>
                         <div class="form-actions">
                             <button type="submit" id="submitBtn">Save News</button>
                             <button type="button" id="cancelBtn" class="secondary-btn" hidden>Cancel Edit</button>
@@ -97,27 +90,12 @@
                 </div>
 
                 <div class="panel table-panel">
-                    <div class="panel-header">
-                        <h3>Existing News</h3>
-                        <span id="newsCount">0 posts</span>
-                    </div>
-
-                    <div class="table-wrap">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Image</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="newsTable"></tbody>
-                        </table>
-                    </div>
+                    <div class="panel-header"><h3>Existing News</h3><span id="newsCount">0 posts</span></div>
+                    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Title</th><th>Description</th><th>Image</th><th>Actions</th></tr></thead><tbody id="newsTable"></tbody></table></div>
                 </div>
             </section>
+
+            <div class="page-footer">Nanyoni Charity Foundation • Secure admin portal</div>
         </main>
     </div>
 

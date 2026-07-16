@@ -82,9 +82,9 @@ function fetchCount(path){
 }
 
 function resolveAvatarUrl(image){
-    if (!image) return 'images/Logo 1.png';
+    if (!image) return '/images/Logo%201.png';
     const value = String(image).trim();
-    if (!value) return 'images/Logo 1.png';
+    if (!value) return '/images/Logo%201.png';
     if (/^(https?:)?\/\//i.test(value) || value.startsWith('data:')) return value;
     if (value.startsWith('/')) return window.ncfApiUrl ? window.ncfApiUrl(value) : value;
     return value;
@@ -100,7 +100,7 @@ function renderAdminProfile(admin){
     const sidebarImageEl = document.getElementById('sidebarAdminImage');
     const fullName = admin.fullname || admin.name || admin.username || 'Admin';
     const roleName = admin.role || admin.position || 'Administrator';
-    const avatar = resolveAvatarUrl(admin.image || 'images/Logo 1.png');
+    const avatar = resolveAvatarUrl(admin.image || '/images/Logo%201.png');
     if (nameEl) nameEl.textContent = fullName;
     if (roleEl) roleEl.textContent = roleName;
     if (imageEl) imageEl.src = avatar;

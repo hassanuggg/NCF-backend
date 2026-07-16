@@ -9,24 +9,27 @@
 <body>
     <div class="dashboard-shell">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-icon"><img style="height: 45px;" src="images/logo 1.png" alt="NCF Logo"></div>
-                <div>
-                    <h2>NCF Admin</h2>
-                    <p>Profile Center</p>
+            <div>
+                <div class="brand">
+                    <div class="brand-icon"><img src="/images/Logo%201.png" alt="Nanyoni Charity Foundation Logo"></div>
+                    <div>
+                        <h2>NCF Admin</h2>
+                        <p>Profile Center</p>
+                    </div>
                 </div>
+                <nav class="nav-links">
+                    <a href="/dashboard">🏠 Dashboard</a>
+                    <a href="/news-page">📰 News</a>
+                    <a href="/events-page">📅 Events</a>
+                    <a href="/gallery-page">🖼 Gallery</a>
+                    <a href="/donations-page">❤️ Donations</a>
+                    <a href="/volunteers-page">👥 Volunteers</a>
+                    <a href="/messages-page">📩 Messages</a>
+                    <a href="/profile.html" class="active">👤 Profile</a>
+                    <a href="/settings.html">⚙ Settings</a>
+                    <a href="#" id="logoutLinkSidebar">🚪 Logout</a>
+                </nav>
             </div>
-            <nav class="nav-links">
-                <a href="/dashboard">🏠 Dashboard</a>
-                <a href="/news-page">📰 News</a>
-                <a href="/events-page">📅 Events</a>
-                <a href="/gallery-page">🖼 Gallery</a>
-                <a href="/donations-page">❤️ Donations</a>
-                <a href="/volunteers-page">👥 Volunteers</a>
-                <a href="/messages-page">📩 Messages</a>
-                <a href="/profile.html" class="active">👤 Profile</a>
-                <a href="#" id="logoutLink">🚪 Logout</a>
-            </nav>
             <div class="sidebar-footer">
                 <p>Professional profile</p>
                 <strong>Manage account details securely.</strong>
@@ -35,16 +38,19 @@
 
         <main class="main">
             <header class="topbar">
-                <div>
-                    <p class="eyebrow">Account</p>
-                    <h1>Administrator Profile</h1>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar" onclick="document.body.classList.toggle('sidebar-open')">☰</button>
+                    <div>
+                        <p class="eyebrow">Account</p>
+                        <h1>Administrator Profile</h1>
+                    </div>
                 </div>
                 <div class="user-chip" id="profileMenuWrapper">
                     <div class="user-chip-info">
                         <strong id="adminName">Admin</strong>
                         <span id="adminRole">Role</span>
                     </div>
-                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="images/logo 1.png">
+                    <img id="adminImage" class="avatar-image" alt="Admin profile" src="/images/Logo%201.png">
                     <span class="status-dot"></span>
                     <div class="profile-menu" id="profileMenu">
                         <a href="/profile.html">My Profile</a>
@@ -53,6 +59,8 @@
                     </div>
                 </div>
             </header>
+
+            <div class="page-toolbar"><div class="breadcrumbs"><a href="/dashboard">Dashboard</a> &gt; Profile</div><a class="back-link" href="/dashboard">← Back to Dashboard</a></div>
 
             <section class="hero-card">
                 <div>
@@ -115,6 +123,8 @@
                     </form>
                 </div>
             </section>
+
+            <div class="page-footer">Nanyoni Charity Foundation • Secure admin portal</div>
         </main>
     </div>
 

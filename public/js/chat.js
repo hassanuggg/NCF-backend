@@ -15,7 +15,7 @@ function initChat(){
     if (storedAdmin) {
         const fullName = storedAdmin.fullname || storedAdmin.name || storedAdmin.username || 'Admin';
         const roleName = storedAdmin.role || storedAdmin.position || 'Administrator';
-        const avatar = storedAdmin.image || 'images/Logo 1.png';
+        const avatar = storedAdmin.image || '/images/Logo%201.png';
         const topName = document.getElementById('adminName');
         const topRole = document.getElementById('adminRole');
         const topImage = document.getElementById('adminImage');
@@ -115,6 +115,8 @@ function renderConversationList(){
     const container = document.getElementById('conversationList');
     if (!container) return;
 
+    updateSummaryCards();
+
     const filtered = chatAdmins.filter((admin) => {
         const term = chatSearchTerm;
         if (!term) return true;
@@ -135,7 +137,7 @@ function renderConversationList(){
         const previewTime = preview ? formatChatTime(preview.created_at) : '';
         return `
             <div class="conversation-item ${activeClass}" data-admin-id="${admin.id}" onclick="openConversation(${admin.id})">
-                <img class="conversation-avatar" src="${admin.image || '/images/logo 1.png'}" alt="${escapeHtml(admin.fullname)}" />
+                <img class="conversation-avatar" src="${admin.image || '/images/Logo%201.png'}" alt="${escapeHtml(admin.fullname)}" />
                 <div class="conversation-body">
                     <div class="conversation-head">
                         <strong>${escapeHtml(admin.fullname)}</strong>
@@ -181,6 +183,31 @@ function resolveChatRecipient(){
     return null;
 }
 
+function updateSummaryCards(){
+    const unreadEl = document.getElementById('unreadSummary');
+    const activeEl = document.getElementById('activeChatsSummary');
+    const todayEl = document.getElementById('todaySummary');
+    if (!unreadEl && !activeEl && !todayEl) return;
+
+    const unreadCount = chatMessages.filter((message) => {
+        const isUnread = Number(message.is_read) === 0;
+        const isIncoming = Number(message.receiver_id) === Number(document.body.dataset.adminId);
+        return isUnread && isIncoming;
+    }).length;
+
+    const activeCount = chatAdmins.length;
+    const todayCount = chatMessages.filter((message) => {
+        if (!message.created_at) return false;
+        const created = new Date(message.created_at);
+        const now = new Date();
+        return created.getDate() === now.getDate() && created.getMonth() === now.getMonth() && created.getFullYear() === now.getFullYear();
+    }).length;
+
+    if (unreadEl) unreadEl.textContent = unreadCount;
+    if (activeEl) activeEl.textContent = activeCount;
+    if (todayEl) todayEl.textContent = todayCount;
+}
+
 function renderHeader(){
     const header = document.getElementById('chatMainHeader');
     const admin = chatAdmins.find((item) => Number(item.id) === Number(currentChatAdminId));
@@ -191,7 +218,7 @@ function renderHeader(){
     }
     header.innerHTML = `
         <div class="header-main">
-            <img src="${admin.image || '/images/logo 1.png'}" alt="${escapeHtml(admin.fullname)}" />
+            <img src="${admin.image || '/images/Logo%201.png'}" alt="${escapeHtml(admin.fullname)}" />
             <div>
                 <h4>${escapeHtml(admin.fullname)}</h4>
                 <p>${escapeHtml(admin.role)} • ${admin.is_online ? 'Online' : 'Offline'}</p>
@@ -211,7 +238,7 @@ function renderMessages(){
     container.innerHTML = chatMessages.map((message) => {
         const isOutgoing = message.direction === 'outgoing';
         const senderName = escapeHtml(message.sender || 'Unknown');
-        const senderImage = message.sender_image || '/images/logo 1.png';
+        const senderImage = message.sender_image || '/images/Logo%201.png';
         const body = escapeHtml(message.message || '');
         let attachments = '';
         if (message.attachment) {

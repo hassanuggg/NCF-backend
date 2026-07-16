@@ -71,7 +71,7 @@ function getSenderImage(senderName){
     if (normalized.includes('akello')) return '/images/ID/Akello Helena Administration and Finance.png';
     if (normalized.includes('ngolobe')) return '/images/ID/Ngolobe Evans DR of communication and public relations.png';
     if (normalized.includes('wejuli')) return '/images/ID/Wejuli Christopher DR operations and programs.png';
-    return '/images/logo 1.png';
+    return '/images/Logo%201.png';
 }
 
 function renderPanel(msg){
