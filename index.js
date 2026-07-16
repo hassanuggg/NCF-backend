@@ -139,7 +139,7 @@ app.use((req, res, next) => {
 });
 
 app.use(requireAuth);
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
     if (req.session && req.session.adminId) return res.redirect('/dashboard');
@@ -1140,8 +1140,8 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log("Server Started");
+server.listen(port, () => {
+    console.log(`Server Started on port ${PORT}`);
     // remove orphaned images on startup
     try { sweepOrphanNewsImages(); } catch(e){ console.warn('sweep error', e); }
 });
